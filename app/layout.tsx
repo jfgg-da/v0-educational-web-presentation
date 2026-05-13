@@ -1,15 +1,27 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Plus_Jakarta_Sans, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import contentConfig from '@/lib/content.config'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const plusJakartaSans = Plus_Jakarta_Sans({ 
+  subsets: ["latin"],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const geistMono = Geist_Mono({ 
+  subsets: ["latin"],
+  variable: '--font-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: contentConfig.meta.title,
+  description: contentConfig.meta.subtitle,
   generator: 'v0.app',
+  authors: contentConfig.meta.authors.map(a => ({ name: a.name })),
+  keywords: ['educación', 'competencias digitales', 'universidad', 'aprendizaje', 'ODC'],
   icons: {
     icon: [
       {
@@ -29,14 +41,22 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  themeColor: '#0F172A',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
+    <html lang={contentConfig.meta.language} className="bg-background">
+      <body className={`${plusJakartaSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
