@@ -19,6 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: contentConfig.meta.title,
   description: contentConfig.meta.subtitle,
+  descriptions: contentConfig.meta.description,
   generator: 'v0.app',
   authors: contentConfig.meta.authors.map(a => ({ name: a.name })),
   keywords: ['educación', 'competencias digitales', 'universidad', 'aprendizaje', 'ODC'],

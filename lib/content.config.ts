@@ -90,6 +90,7 @@ export interface ContentConfig {
   meta: {
     title: string;
     subtitle: string;
+    description: string;
     authors: Author[];
     institution: string;
     date: string;
@@ -132,27 +133,27 @@ export interface ContentConfig {
 
 const contentConfig: ContentConfig = {
   meta: {
-    title: "Competencias Digitales en la Educación Superior",
-    subtitle: "Transformando la enseñanza para el siglo XXI",
+    title: "Marcos de Gobernanza Algorítmica en Sistemas de Decisión Empresarial Automatizados",
+    subtitle: "Especialización en Analítica y Ciencia de Datos",
+    description: "Este ODC pretende profundizar sobre enfoques de gobernanza de algoritmos que determinan decisiones de negocio de forma automatizada sobre personas, procesos o recursos, y que estrategias permiten su evaluación y explicabilidad tanto conceptual como técnica, para que desde su implementación se mitiguen riesgos asociados a transparencia y responsabilidad empresarial, evitando que estos algoritmos actúen como cajas negras, o que amplifiquen sesgos culturales que vulneran principios éticos y sociales",
     authors: [
-      { name: "Dr. María Elena Rodríguez", role: "Docente Investigadora" },
-      { name: "Mg. Carlos Andrés Vásquez", role: "Diseñador Instruccional" },
+      { name: "Felipe Gasca Guerrero", role: "Autor/Investigador" },
     ],
-    institution: "Universidad Nacional de Colombia - Facultad de Educación",
+    institution: "Universidad de Cundinamarca - Instituto de Posgrados",
     date: "Mayo 2026",
     version: "v1.0",
     language: "es",
     passingScore: 70,
     primaryColor: "#3B82F6",
     accentColor: "#F59E0B",
-    coverImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
+    coverImage: "https://img.magnific.com/fotos-premium/artificial-intelligence-and-justice-the-future-of-legal-technology_1101054-89336.jpg?w=740",
   },
 
   rea: {
     title: "Resultado Esperado de Aprendizaje",
-    statement: "Al finalizar este módulo, el estudiante será capaz de identificar, evaluar y aplicar las competencias digitales fundamentales necesarias para desenvolverse efectivamente en entornos de educación superior, utilizando herramientas tecnológicas de manera crítica, ética y creativa para potenciar su proceso de aprendizaje y desarrollo profesional.",
-    targetAudience: "Este recurso está dirigido a estudiantes universitarios de pregrado y posgrado, así como a docentes interesados en fortalecer sus competencias digitales. Se asume un nivel básico de manejo de dispositivos electrónicos y navegación web. El contenido es especialmente relevante para quienes buscan integrar tecnologías digitales en sus prácticas académicas y profesionales.",
-    avatarTranscript: "¡Bienvenidos a este objeto digital de aprendizaje sobre Competencias Digitales en la Educación Superior! En las próximas pantallas, exploraremos juntos las habilidades fundamentales que necesitas para desenvolverte con éxito en el mundo digital académico. Aprenderás sobre alfabetización informacional, comunicación digital, creación de contenidos, seguridad en línea y resolución de problemas tecnológicos. ¡Comencemos este viaje de transformación digital!",
+    statement: "Al culminar este ODC, el lector podrá conocer, adaptar y aplicar marcos metodológicos de gobernanza y auditoría algorítmica en sistemas de decisión empresarial automatizada, logrando la integración de controles éticos y técnicos dentro del ciclo de vida de estos sistemas, para garantizar responsabilidad y transparencia en el contexto de la transformación digital de las organizaciones.",
+    targetAudience: "Este ODC está dirigido a organizaciones, profesionales o estudiantes, que utilicen algoritmos para sistemas de decisión automatizada, y que deseen comprender el funcionamiento de estos sistemas dentro de la integración con procesos empresariales, en términos de explicabilidad y responsabilidad.",
+    avatarTranscript: "¡Bienvenidos a este objeto digital de conocimiento sobre Marcos de Gobernanza Algorítmica en Sistemas de Decisión Empresarial Automatizados! En las próximas pantallas, exploraremos juntos enfoques de gobernanza de algoritmos y que estrategias permiten su evaluación y control con el fin de mitigar riesgos asociados a transparencia y responsabilidad empresarial. ¡Comencemos este viaje de transformación digital!",
   },
 
   modules: [
@@ -444,13 +445,13 @@ La **adaptabilidad digital** implica estar abierto a nuevas plataformas, ser cap
 
   credits: {
     team: [
-      { role: "Autoría y contenido académico", name: "Dr. María Elena Rodríguez" },
-      { role: "Diseño instruccional", name: "Mg. Carlos Andrés Vásquez" },
-      { role: "Desarrollo web", name: "Ing. Laura Sofía Mendoza" },
-      { role: "Diseño gráfico", name: "Dis. Alejandro José Herrera" },
-      { role: "Locución avatar", name: "Act. Valentina Torres" },
-      { role: "Revisión pedagógica", name: "Dra. Patricia Isabel Moreno" },
-      { role: "Coordinación general", name: "Mg. Ricardo Esteban Gómez" },
+      { role: "Autoría y desarrollo conceptual", name: "Jose Felipe Gasca Guerrero" },
+      { role: "Diseño y desarrollo web", name: "Equipo autor" },
+      { role: "Guion de audio y transcripciones", name: "Equipo autor" },
+      { role: "Edición multimedia y producción de recursos", name: "Equipo autor" },
+      { role: "Progama", name: "Especialización en Analitica y Ciencia de Datos"},
+      { role: "Institución", name: "Universidad de Cundinamarca"}
+
     ],
     license: "CC BY 4.0",
     licenseUrl: "https://creativecommons.org/licenses/by/4.0/deed.es",
