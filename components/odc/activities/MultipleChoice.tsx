@@ -96,7 +96,7 @@ export default function MultipleChoice({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           className={`p-4 rounded-xl border text-sm leading-relaxed ${
-            isCorrect ? "border-green-500/30 bg-green-500/10 text-green-300" : "border-red-500/30 bg-red-500/10 text-red-300"
+            isCorrect ? "border-green-500/30 bg-green-500/10 text-primary" : "border-red-500/30 bg-red-500/10 text-red-600"
           }`}
         >
           <div className="flex items-start gap-2">

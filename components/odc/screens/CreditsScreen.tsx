@@ -25,7 +25,7 @@ export default function CreditsScreen({ credits, meta }: CreditsScreenProps) {
         </div>
 
         <div className="glass-card p-6">
-          <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Equipo de trabajo</h3>
+          <h3 className="text-base font-semibold text-primary uppercase tracking-wider mb-4">Equipo de trabajo</h3>
           <div className="space-y-3">
             {credits.team.map((member, i) => (
               <motion.div
@@ -36,13 +36,13 @@ export default function CreditsScreen({ credits, meta }: CreditsScreenProps) {
                 className="flex items-center gap-3"
               >
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xs font-bold text-primary">
+                  <span className="text-base font-bold text-primary">
                     {member.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
                   </span>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">{member.name}</p>
-                  <p className="text-xs text-muted-foreground">{member.role}</p>
+                  <p className="text-base font-semibold text-foreground">{member.name}</p>
+                  <p className="text-sm text-foreground/70">{member.role}</p>
                 </div>
               </motion.div>
             ))}

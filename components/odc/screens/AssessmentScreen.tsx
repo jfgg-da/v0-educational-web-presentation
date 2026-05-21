@@ -89,28 +89,28 @@ export default function AssessmentScreen({ assessment, passingScore, onComplete,
             <p className="text-3xl font-bold mb-2">
               <span className={passed ? "text-green-400" : "text-red-400"}>{percentage}%</span>
             </p>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-base font-semibold text-foreground mb-4">
               {score} de {maxScore} puntos
             </p>
-            <p className="text-sm text-foreground/80 leading-relaxed">
+            <p className="text-base text-foreground leading-relaxed">
               {passed ? assessment.passingMessage : assessment.failingMessage}
             </p>
           </div>
 
           {/* Per-question review */}
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Revisión de respuestas</h3>
+            <h3 className="text-base font-semibold text-muted-foreground uppercase tracking-wider">Revisión de respuestas</h3>
             {questions.map((q, i) => {
               const ans = answers[q.id];
               const opt = q.options?.find((o) => o.id === ans);
               const correct = opt?.correct ?? false;
               return (
-                <div key={q.id} className={`glass-card p-4 text-sm border ${correct ? "border-green-500/20" : "border-red-500/20"}`}>
+                <div key={q.id} className={`glass-card p-4 text-base border ${correct ? "border-green-500/20" : "border-red-500/20"}`}>
                   <div className="flex items-start gap-2">
                     {correct ? <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" /> : <XCircle className="h-4 w-4 text-red-400 mt-0.5 flex-shrink-0" />}
                     <div>
                       <p className="font-semibold text-foreground/90">Pregunta {i + 1}: {q.question}</p>
-                      <p className="text-muted-foreground mt-1">{opt?.feedback}</p>
+                      <p className="text-foreground/80 italic mt-1">{opt?.feedback}</p>
                     </div>
                   </div>
                 </div>
@@ -121,11 +121,11 @@ export default function AssessmentScreen({ assessment, passingScore, onComplete,
           {!passed && (
             <button
               onClick={onRetry}
-              className="w-full py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm
+              className="w-full py-3 rounded-full bg-primary text-primary-foreground font-semibold text-base
                 hover:opacity-90 transition-all focus-ring min-h-[44px] flex items-center justify-center gap-2"
             >
               <RotateCcw className="h-4 w-4" />
-              Intentar de nuevo
+              Intentar de nuevo (Reiniciar puntaje)
             </button>
           )}
         </motion.div>
@@ -144,7 +144,7 @@ export default function AssessmentScreen({ assessment, passingScore, onComplete,
       >
         <div className="text-center">
           <h2 className="fluid-text-xl font-bold text-foreground mb-2">{assessment.title}</h2>
-          <p className="text-xs text-muted-foreground">{assessment.instructions}</p>
+          <p className="text-sm text-muted-foreground">{assessment.instructions}</p>
           <div className="flex items-center justify-center gap-2 mt-3">
             {questions.map((_, i) => (
               <div
@@ -192,7 +192,7 @@ export default function AssessmentScreen({ assessment, passingScore, onComplete,
                   >
                     {option.id.toUpperCase()}
                   </span>
-                  <span className="flex-1 text-sm leading-relaxed">{option.text}</span>
+                  <span className="flex-1 text-base leading-relaxed">{option.text}</span>
                   {showResult && option.correct && <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />}
                   {showResult && isSelected && !option.correct && <XCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />}
                 </motion.button>
@@ -204,8 +204,8 @@ export default function AssessmentScreen({ assessment, passingScore, onComplete,
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`p-4 rounded-xl border text-sm leading-relaxed ${
-                selectedOption.correct ? "border-green-500/30 bg-green-500/10 text-green-300" : "border-red-500/30 bg-red-500/10 text-red-300"
+              className={`p-4 rounded-xl border text-base leading-relaxed ${
+                selectedOption.correct ? "border-green-500/30 bg-green-500/10 text-green-800" : "border-red-500/30 bg-red-500/10 text-red-600"
               }`}
             >
               <p>{selectedOption.feedback}</p>
@@ -217,7 +217,7 @@ export default function AssessmentScreen({ assessment, passingScore, onComplete,
           <button
             onClick={handleConfirm}
             disabled={!selected}
-            className="w-full py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm
+            className="w-full py-3 rounded-full bg-primary text-primary-foreground font-semibold text-base
               hover:opacity-90 disabled:opacity-30 disabled:cursor-not-allowed transition-all focus-ring min-h-[44px]"
           >
             Confirmar respuesta
@@ -225,7 +225,7 @@ export default function AssessmentScreen({ assessment, passingScore, onComplete,
         ) : (
           <button
             onClick={handleNext}
-            className="w-full py-3 rounded-full bg-accent text-accent-foreground font-semibold text-sm
+            className="w-full py-3 rounded-full bg-accent text-accent-foreground font-semibold text-base
               hover:opacity-90 transition-all focus-ring min-h-[44px]"
           >
             {currentQ < questions.length - 1 ? "Siguiente pregunta" : "Ver resultados"}

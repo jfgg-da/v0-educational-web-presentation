@@ -20,7 +20,11 @@ export default function ConclusionScreen({ conclusion }: ConclusionScreenProps) 
         <h2 className="fluid-text-2xl font-bold text-foreground text-center">{conclusion.title}</h2>
 
         <div className="glass-card p-6">
-          <p className="text-sm text-foreground/90 leading-relaxed">{conclusion.synthesis}</p>
+          <p className="text-base text-foreground/90 leading-relaxed text-justify">{conclusion.synthesis_1}</p>
+        </div>
+
+        <div className="glass-card p-6">
+          <p className="text-base text-foreground/90 leading-relaxed text-justify">{conclusion.synthesis_2}</p>
         </div>
 
         <div className="glass-card p-6">
