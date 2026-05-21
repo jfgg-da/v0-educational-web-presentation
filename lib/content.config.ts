@@ -173,7 +173,7 @@ const contentConfig: ContentConfig = {
       title: "Fundamentos y Terminología",
       icon: "Search",
       purpose: "Conocer y comprender los principales conceptos relacionados al campo de la ciencia de datos y la IA.",
-      image: "/screenshots/hierarchy IA.jpg",
+      image: "/screenshots/Hierarchy IA.jpg",
       mediaSource: {
         label: "Subsets of Artificial Intelligence",
         url: "https://www.researchgate.net/figure/A-comparative-view-of-AI-machine-learning-deep-learning-andgenerative-AI-source_fig1_373797588",
@@ -214,7 +214,7 @@ Sin embargo, el crecimiento de estas tecnologías también plantea retos sobre e
       title: "Desafíos de los Algoritmos en el Entorno Empresarial",
       icon: "Swords",
       purpose: "Identificar los retos que enfrentan las organizaciones al implementar algoritmos o sistemas de IA.",
-      image: "/screenshots/desafios.png",
+      image: "/screenshots/Desafios.png",
       mediaSource: {
         label: "Desafios de los algoritmos de desición",
         url: "https://datos.gob.es/sites/default/files/doc/file/nuevas_tendencias_y_desafios_en_el_mundo_de_los_datos.pdf",
@@ -253,7 +253,7 @@ A continuación, reflexiona sobre esta pregunta: ¿los algoritmos funcionan como
       title: "Acerca de los Sesgos y la Opacidad",
       icon: "Users",
       purpose: "Comprender los conceptos de los sesgos y los retos de la opacidad.",
-      image: "/screenshots/bias.jpg",
+      image: "/screenshots/Bias.jpg",
       mediaSource: {
         label: "What Is Algorithmic Bias",
         url: "https://expertallies.com/identifying-algorithmic-ai-bias/",
