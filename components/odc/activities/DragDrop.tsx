@@ -125,7 +125,7 @@ export default function DragDrop({
 
       {/* Current matches display */}
       {Object.keys(matches).length > 0 && !showFeedback && !completed && (
-        <div className="space-y-1.5 p-3 rounded-xl bg-secondary/50 border border-white/5">
+        <div className="space-y-1.5 p-3 rounded-xl bg-accent/30 border border-white/5">
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Tus emparejamientos:</p>
           {Object.entries(matches).map(([term, def]) => (
             <div key={term} className="flex items-center gap-2 text-xs">
@@ -154,8 +154,8 @@ export default function DragDrop({
           animate={{ opacity: 1, y: 0 }}
           className={`p-4 rounded-xl border text-sm leading-relaxed ${
             pairs.every((p) => matches[p.term] === p.definition)
-              ? "border-green-500/30 bg-green-500/10 text-green-300"
-              : "border-red-500/30 bg-red-500/10 text-red-300"
+              ? "border-green-500/30 bg-green-500/10 text-primary"
+              : "border-red-500/30 bg-red-500/10 text-red-800"
           }`}
         >
           {pairs.every((p) => matches[p.term] === p.definition) ? (

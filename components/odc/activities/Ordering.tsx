@@ -90,7 +90,7 @@ export default function Ordering({
                 </div>
               )}
               {isCorrectPosition && <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />}
-              {isWrongPosition && <XCircle className="h-4 w-4 text-red-400 flex-shrink-0" />}
+              {isWrongPosition && <XCircle className="h-4 w-4 text-red-600 flex-shrink-0" />}
             </motion.div>
           );
         })}
@@ -112,8 +112,8 @@ export default function Ordering({
           animate={{ opacity: 1, y: 0 }}
           className={`p-4 rounded-xl border text-sm leading-relaxed ${
             items.every((item, idx) => item.id === steps[idx].id)
-              ? "border-green-500/30 bg-green-500/10 text-green-300"
-              : "border-red-500/30 bg-red-500/10 text-red-300"
+              ? "border-green-500/30 bg-green-500/10 text-green-800"
+              : "border-red-500/30 bg-red-500/10 text-red-600"
           }`}
         >
           {items.every((item, idx) => item.id === steps[idx].id) ? (
