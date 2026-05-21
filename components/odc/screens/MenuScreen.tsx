@@ -11,8 +11,7 @@ interface MenuScreenProps {
   onNavigate: (screenIndex: number) => void;
 }
 
-// Fixed screen indices: 0=Cover, 1=REA, 2=Menu, 3..N=Modules, N+1=Assessment, N+2=Conclusion, N+3=References, N+4=Credits
-const FIXED_SCREENS_BEFORE_MODULES = 3;
+const SCREENS_BEFORE_MODULES = 3;
 
 export default function MenuScreen({ config, completedModules, onNavigate }: MenuScreenProps) {
   const sections = [
@@ -20,14 +19,14 @@ export default function MenuScreen({ config, completedModules, onNavigate }: Men
     { label: config.rea.title, screen: 1 },
     ...config.modules.map((m, i) => ({
       label: m.title,
-      screen: FIXED_SCREENS_BEFORE_MODULES + i,
+      screen: SCREENS_BEFORE_MODULES + i,
       icon: m.icon,
       completed: completedModules.has(m.id),
     })),
-    { label: config.assessment.title, screen: FIXED_SCREENS_BEFORE_MODULES + config.modules.length },
-    { label: config.conclusion.title, screen: FIXED_SCREENS_BEFORE_MODULES + config.modules.length + 1 },
-    { label: "Referencias", screen: FIXED_SCREENS_BEFORE_MODULES + config.modules.length + 2 },
-    { label: "Créditos", screen: FIXED_SCREENS_BEFORE_MODULES + config.modules.length + 3 },
+    { label: config.assessment.title, screen: SCREENS_BEFORE_MODULES + config.modules.length },
+    { label: config.conclusion.title, screen: SCREENS_BEFORE_MODULES + config.modules.length + 1 },
+    { label: "Referencias", screen: SCREENS_BEFORE_MODULES + config.modules.length + 2 },
+    { label: "Créditos", screen: SCREENS_BEFORE_MODULES + config.modules.length + 3 },
   ];
 
   return (
@@ -38,7 +37,7 @@ export default function MenuScreen({ config, completedModules, onNavigate }: Men
         transition={{ duration: 0.6 }}
         className="max-w-2xl w-full"
       >
-        <h2 className="fluid-text-2xl font-bold text-foreground text-center mb-8">{"Menú de navegación"}</h2>
+        <h2 className="fluid-text-3xl font-bold text-foreground text-center mb-8">{"Menú de navegación"}</h2>
         <div className="space-y-2">
           {sections.map((section, index) => (
             <motion.button
@@ -54,11 +53,11 @@ export default function MenuScreen({ config, completedModules, onNavigate }: Men
                   <LucideIcon name={section.icon as string} className="h-4 w-4 text-primary" />
                 </div>
               ) : (
-                <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-secondary flex items-center justify-center">
-                  <span className="text-xs font-bold text-muted-foreground">{index + 1}</span>
+                <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <span className="text-lg font-bold text-foreground">{index + 1}</span>
                 </div>
               )}
-              <span className="flex-1 text-sm font-medium group-hover:text-primary transition-colors">
+              <span className="flex-1 text-lg font-medium group-hover:text-primary transition-colors">
                 {section.label}
               </span>
               {"completed" in section && section.completed && (

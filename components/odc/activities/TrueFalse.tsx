@@ -47,7 +47,7 @@ export default function TrueFalse({
           const isSelected = selected === opt.value;
           const showResult = showFeedback || completed;
           const isAnswer = opt.value === answer;
-          let btnClass = "border-white/10 hover:border-white/20";
+          let btnClass = "border-primary/50 hover:border-accent";
           if (showResult && isAnswer) btnClass = "border-green-500/60 bg-green-500/10";
           else if (showResult && isSelected && !isAnswer) btnClass = "border-red-500/60 bg-red-500/10";
 
@@ -58,7 +58,7 @@ export default function TrueFalse({
               whileTap={!showResult ? { scale: 0.98 } : {}}
               onClick={() => handleSelect(opt.value)}
               disabled={showResult}
-              className={`flex-1 py-4 rounded-xl border font-semibold text-sm transition-all focus-ring min-h-[44px] ${btnClass} disabled:cursor-default`}
+              className={`flex-1 py-4 rounded-xl border font-semibold text-base transition-all focus-ring min-h-[44px] ${btnClass} disabled:cursor-default`}
             >
               {opt.label}
               {showResult && isAnswer && <CheckCircle2 className="inline ml-2 h-4 w-4 text-green-400" />}
@@ -72,8 +72,8 @@ export default function TrueFalse({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`p-4 rounded-xl border text-sm leading-relaxed ${
-            isCorrect ? "border-green-500/30 bg-green-500/10 text-green-300" : "border-red-500/30 bg-red-500/10 text-red-300"
+          className={`p-4 rounded-xl border text-base leading-relaxed ${
+            isCorrect ? "border-green-500/30 bg-green-500/10 text-green-800" : "border-red-500/30 bg-red-500/10 text-red-500"
           }`}
         >
           <div className="flex items-start gap-2">

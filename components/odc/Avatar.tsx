@@ -1,82 +1,154 @@
 "use client";
 
-import { useState } from "react";
-import { Volume2, VolumeX, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 
-interface AvatarProps {
-  transcript: string;
-  className?: string;
-}
+import { motion } from "framer-motion";
 
-export function Avatar({ transcript, className }: AvatarProps) {
-  const [showTranscript, setShowTranscript] = useState(false);
+export type AvatarHandle = {
+  play: () => void;
+  pause: () => void;
+  isPlaying: () => boolean;
+};
 
-  return (
-    <div className={cn("flex flex-col items-center gap-4", className)}>
-      {/* Avatar Image */}
-      <motion.div
-        className="relative"
-        whileHover={{ scale: 1.05 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
-        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-primary to-accent p-0.5">
-          <div className="w-full h-full rounded-full bg-card flex items-center justify-center">
-            <User className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-          </div>
-        </div>
-        
-        {/* Pulse animation */}
-        <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
-      </motion.div>
+export type AvatarProps = {
+  transcript?: string;
+  imageSrc?: string;
+  videoSrc?: string;
+  alt?: string;
+};
 
-      {/* Toggle Transcript Button */}
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => setShowTranscript(!showTranscript)}
-        className={cn(
-          "rounded-full gap-2 transition-all duration-200",
-          "border-white/20 hover:bg-white/10",
-          showTranscript && "bg-white/10"
-        )}
-        aria-expanded={showTranscript}
-        aria-controls="avatar-transcript"
-      >
-        {showTranscript ? (
-          <>
-            <VolumeX className="w-4 h-4" />
-            <span>Ocultar transcripcion</span>
-          </>
-        ) : (
-          <>
-            <Volume2 className="w-4 h-4" />
-            <span>Ver transcripcion</span>
-          </>
-        )}
-      </Button>
+export const Avatar = forwardRef<AvatarHandle, AvatarProps>(
+  ({ transcript, imageSrc, videoSrc, alt = "Avatar" }, ref) => {
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
 
-      {/* Transcript Panel */}
-      <AnimatePresence>
-        {showTranscript && (
+    const [speaking, setSpeaking] = useState(false);
+
+    useEffect(() => {
+      return () => {
+        window.speechSynthesis.cancel();
+        utterRef.current = null;
+      };
+    }, []);
+
+    async function ensureVideoReady() {
+      const v = videoRef.current;
+
+      if (!v) return;
+
+      if (v.readyState < 2) {
+        await new Promise<void>((res) => {
+          const onLoaded = () => {
+            v.removeEventListener("loadedmetadata", onLoaded);
+            res();
+          };
+
+          v.addEventListener("loadedmetadata", onLoaded);
+        });
+      }
+    }
+
+    const startSpeaking = async () => {
+      if (!transcript) return;
+
+      const v = videoRef.current;
+
+      if (v) {
+        try {
+          await ensureVideoReady();
+
+          v.currentTime = 0;
+          await v.play();
+        } catch {}
+      }
+
+      const u = new SpeechSynthesisUtterance(transcript);
+
+      u.lang = "es-CO";
+      u.rate = 0.95;
+      u.pitch = 1;
+
+      u.onstart = () => {
+        setSpeaking(true);
+      };
+
+      u.onend = () => {
+        setSpeaking(false);
+
+        utterRef.current = null;
+
+        v?.pause();
+      };
+
+      await v.play();
+
+      window.speechSynthesis.speak(u);
+
+      utterRef.current = u;
+
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(u);
+    };
+
+    const stopSpeaking = () => {
+      window.speechSynthesis.cancel();
+
+      utterRef.current = null;
+
+      setSpeaking(false);
+
+      videoRef.current?.pause();
+    };
+
+    useImperativeHandle(ref, () => ({
+      play: startSpeaking,
+      pause: stopSpeaking,
+      isPlaying: () => speaking,
+    }));
+
+    return (
+      <div className="w-full h-full overflow-hidden">
+        <div className="relative w-full h-full rounded-xl overflow-hidden bg-muted">
+          {videoSrc ? (
+            <video
+              ref={videoRef}
+              src={videoSrc}
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={imageSrc}
+              alt={alt}
+              className="w-full h-full object-cover"
+            />
+          )}
+
           <motion.div
-            id="avatar-transcript"
-            initial={{ opacity: 0, height: 0, y: -10 }}
-            animate={{ opacity: 1, height: "auto", y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="w-full overflow-hidden"
+            animate={speaking ? { scale: 1.02 } : { scale: 1 }}
+            transition={{ duration: 0.25 }}
+            className="absolute bottom-3 right-3"
           >
-            <div className="glass-card p-4 md:p-6">
-              <p className="text-sm md:text-base leading-relaxed text-foreground/90 italic">
-                &ldquo;{transcript}&rdquo;
-              </p>
-            </div>
+            <div
+              className={`h-3 w-3 rounded-full ${
+                speaking ? "bg-green-400 animate-pulse" : "bg-gray-300"
+              }`}
+            />
           </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+        </div>
+      </div>
+    );
+  }
+);
+
+Avatar.displayName = "Avatar";
+
+export default Avatar;

@@ -41,7 +41,10 @@ export default function ActivityRenderer({ activity, onComplete, completed }: Ac
       return (
         <FillBlank
           sentence={activity.sentence!}
-          correctAnswer={activity.correctAnswer!}
+          question={activity.question!}
+          correctAnswer={activity.correctAnswer}
+          correctAnswers={activity.correctAnswers}
+          correctAnswersPerBlank={activity.correctAnswersPerBlank}
           feedbackCorrect={activity.feedbackCorrect!}
           feedbackWrong={activity.feedbackWrong!}
           points={activity.points}

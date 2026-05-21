@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Plus_Jakarta_Sans, Geist_Mono } from 'next/font/google'
+import { Plus_Jakarta_Sans, Geist_Mono, Raleway, Montserrat, Nunito, Nunito_Sans, Roboto } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import contentConfig from '@/lib/content.config'
 
-const plusJakartaSans = Plus_Jakarta_Sans({ 
+const plusJakartaSans = Nunito_Sans({ 
   subsets: ["latin"],
   variable: '--font-sans',
   display: 'swap',
 })
 
-const geistMono = Geist_Mono({ 
+const geistMono = Roboto({ 
   subsets: ["latin"],
   variable: '--font-mono',
   display: 'swap',
@@ -19,7 +19,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: contentConfig.meta.title,
   description: contentConfig.meta.subtitle,
-  descriptions: contentConfig.meta.description,
   generator: 'v0.app',
   authors: contentConfig.meta.authors.map(a => ({ name: a.name })),
   keywords: ['educación', 'competencias digitales', 'universidad', 'aprendizaje', 'ODC'],
