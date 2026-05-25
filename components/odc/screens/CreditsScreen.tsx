@@ -25,7 +25,7 @@ export default function CreditsScreen({ credits, meta }: CreditsScreenProps) {
         </div>
 
         <div className="glass-card p-6">
-          <h3 className="text-base font-semibold text-primary uppercase tracking-wider mb-4">Equipo de trabajo</h3>
+          <h3 className="text-base font-semibold text-primary uppercase tracking-wider mb-4">Metadatos del ODC</h3>
           <div className="space-y-3">
             {credits.team.map((member, i) => (
               <motion.div

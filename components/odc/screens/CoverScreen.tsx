@@ -1,15 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircleQuestionMark } from "lucide-react";
 import type { ContentConfig } from "@/lib/content.config";
+import { useState } from "react";
 
 interface CoverScreenProps {
   meta: ContentConfig["meta"];
   onStart: () => void;
 }
 
+function renderMarkdown(text: string) {
+return text
+.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-semibold">$1</strong>')
+.replace(/\*(.*?)\*/g, '<em class="text-accent/80 font-semibold">$1</em>')
+.split("\n\n")
+.map((p) => `<p class="mb-3 last:mb-0">${p}</p>`)
+.join("");
+}
+
 export default function CoverScreen({ meta, onStart }: CoverScreenProps) {
+  const [showInfo, setShowInfo] = useState(false);
   return (
     <div className="fixed h-svh w-full flex items-center justify-center overflow-hidden">
       {/* Background video */}
@@ -66,17 +77,103 @@ export default function CoverScreen({ meta, onStart }: CoverScreenProps) {
 
         <p className="text-lg text-foreground mb-8">{meta.Resumen}</p>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={onStart}
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary/80
-            text-primary-foreground font-semibold fluid-text-base shadow-lg shadow-primary/20
-            hover:shadow-primary/30 transition-all focus-ring min-h-[44px] mb-8"
-        >
-          ¡Iniciemos!
-          <ArrowRight className="h-5 w-5" />
-        </motion.button>
+        <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
+          
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onStart}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary/80
+              text-primary-foreground font-semibold fluid-text-base shadow-lg shadow-primary/20
+              hover:shadow-primary/30 transition-all focus-ring min-h-[44px]"
+          >
+            ¡Iniciemos!
+            <ArrowRight className="h-5 w-5" />
+          </motion.button>
+
+          <div className="relative inline-block ">
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}  
+            onClick={() => setShowInfo(!showInfo)}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-secondary/70 to-secondary/70
+              text-primary-foreground font-semibold fluid-text-base shadow-lg shadow-primary/20
+              hover:shadow-primary/30 transition-all focus-ring min-h-[44px]"
+          >
+            <MessageCircleQuestionMark className="h-5 w-5" />
+            {meta.infoPopup.title}
+          </motion.button>
+                
+          {showInfo && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="
+                fixed inset-0 z-[999]
+                flex items-center justify-center
+                bg-black/50 backdrop-blur-sm
+                px-4
+              "
+              onClick={() => setShowInfo(false)}
+            >
+            
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 10 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+                className="
+                  relative
+                  w-full
+                  max-w-2xl
+                  max-h-[80vh]
+                  overflow-y-auto
+                  rounded-3xl
+                  border border-white/10
+                  bg-background/95
+                  backdrop-blur-2xl
+                  shadow-2xl
+                  shadow-black/40
+                  p-8
+                "
+              >
+              
+                {/* Botón cerrar */}
+                <button
+                  onClick={() => setShowInfo(false)}
+                  className="
+                    absolute top-4 right-4
+                    w-9 h-9
+                    rounded-full
+                    bg-white/10
+                    hover:bg-white/20
+                    transition-colors
+                    flex items-center justify-center
+                    text-foreground/70
+                  "
+                >
+                  ✕
+                </button>
+
+                {/* Título */}
+                <h3 className="text-2xl font-bold mb-6 text-primary">
+                  {meta.infoPopup.title}
+                </h3>
+
+                {/* Contenido */}
+                <div className="text-foreground/90 leading-relaxed italic space-y-4"
+                    dangerouslySetInnerHTML={{ __html: renderMarkdown(meta.infoPopup.body) }}
+                />
+              </motion.div>
+
+            </motion.div>
+          )}
+        
+        </div>
+        </div>
 
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}

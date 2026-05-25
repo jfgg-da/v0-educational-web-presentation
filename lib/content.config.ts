@@ -110,6 +110,7 @@ export interface ContentConfig {
     primaryColor: string;
     accentColor: string;
     coverImage: string;
+    infoPopup: InfoPopup;
   };
   rea: {
     title: string;
@@ -159,12 +160,31 @@ const contentConfig: ContentConfig = {
     primaryColor: "#ffffff",
     accentColor: "#ffffff",
     coverImage: "/screenshots/medium.mp4",
+    infoPopup: {
+        title: "Ayuda",
+        body: `**¿Cómo navegar este ODC?**
+
+        Dar click en *¡Iniciemos!* para comenzar la experiencia.
+
+*Anterior / Siguiente* —> para navegar entre pantallas.
+
+*Menú* —> en la parte inferior para ver todas las secciones.
+
+*Barra inferior (naranja)* — muestra tu avance en el contenido.
+
+*Actividades* —> cada módulo tiene una actividad interactiva.
+
+*Info* —> cada módulo tiene un botón de información adicional con datos curiosos, estudios de caso o enlaces a recursos externos.
+
+*Evaluación Final* — necesitas 80% para aprobar el REA.
+`,
+      },
   },
 
   rea: {
     title: "Objetivo de Aprendizaje",
-    statement: "Al culminar este ODC, el lector podrá adaptar marcos de gobernanza y auditoría algorítmica en sistemas de decisión automatizada en entornos empresariales, para resolver sus riesgos éticos y técnicos, mediante el análisis de enfoques metodológicos, el diseño de una matriz de riesgos aplicada y la superación de la evaluación final por encima del 80%.",
-    targetAudience: "Este ODC está dirigido a profesionales o estudiantes, que integren el uso de algoritmos en sistemas de decisión automatizada sobre sus procesos, y que deseen comprender, evaluar y supervisar el funcionamiento de estos sistemas en términos de explicabilidad y responsabilidad al integrarse con procesos empresariales.",
+    statement: "Al culminar este ODC, el lector podrá adaptar marcos de gobernanza y auditoría algorítmica en sistemas de decisión automatizada en entornos empresariales, para gestionar riesgos éticos y técnicos, mediante el análisis de enfoques metodológicos, el diseño de una matriz de riesgos aplicada y la superación de la evaluación final por encima del 80%.",
+    targetAudience: "Este ODC está dirigido a profesionales o estudiantes de múltiples disciplinas que implementen algoritmos en sistemas de decisión automatizada en procesos del entorno empresarial, y que deseen comprender, evaluar y supervisar el funcionamiento de estos sistemas integrando aspectos de explicabilidad y responsabilidad.",
     avatarTranscript: "¡Hola!. ¡Bienvenidos a este objeto digital de conocimiento sobre Marcos de Gobernanza Algorítmica en Sistemas de Decisión Empresarial!. En el REA (Resultado Esperado de Aprendizaje) Al culminar este ODC, el lector podrá adaptar marcos de gobernanza y auditoría algorítmica en sistemas de decisión automatizada en entornos empresariales, para resolver sus riesgos éticos y técnicos, mediante el análisis de enfoques metodológicos, el diseño de una matriz de riesgos aplicada y la superación de la evaluación final por encima del 80%. Para la población objetivo, este ODC está dirigido a profesionales o estudiantes, que integren el uso de algoritmos en sistemas de decisión automatizada sobre sus procesos, y que deseen comprender, evaluar y supervisar el funcionamiento de estos sistemas en términos de explicabilidad y responsabilidad al integrarse con procesos empresariales.",},
 
   modules: [
@@ -654,25 +674,24 @@ Ahora continúa hacia la evaluación para poner a prueba los conceptos aprendido
 
   conclusion: {
     title: "Conclusiones",
-    synthesis_1: `1. Las temáticas expuestas en los contenidos del ODC, reflejan la pluralidad de visiones que existen frente a la gobernanza de sistemas algorítmicos. Se observan componentes convergentes como la gestión de datos y de riesgos, sin embargo, es clara la falta de consenso en aspectos éticos, y de una estrategia estructurada para la integración empresarial. Se tienen ejemplos de empresas que han creado sus organismos de control de forma individual ante una tecnología que es de uso global.
-    
+    synthesis_1: `**1.** Las temáticas expuestas en los contenidos del ODC, reflejan la pluralidad de visiones que existen frente a la gobernanza de sistemas algorítmicos. Se observan componentes convergentes como la gestión de datos y de riesgos, sin embargo, es clara la falta de consenso en aspectos éticos, y de una estrategia estructurada para la integración empresarial. Se tienen ejemplos de empresas que han creado sus organismos de control de forma individual ante una tecnología que es de uso global.
+
     Por lo anterior, se confirma la importancia de adaptar los componentes que más se adecúen con el contexto de cada organización, tomándolos desde un análisis objetivo de las diferentes metodologías y como se complementan entre sí para articular un gobierno efectivo de estos sistemas.
     `,
-    synthesis_2: ` 2. A partir del ejercicio investigativo realizado se evidenció el atraso regional de los países del sur global, para establecer mecanismos propios de gestión de sistemas algorítmicos, además de falta de participación en las discusiones internacionales, o del desarrollo de conversaciones internas sobre la necesidad de contextualizar estos sistemas con problemáticas y retos de la región. 
-    
+    synthesis_2: ` **2.** A partir del ejercicio investigativo realizado se evidenció el atraso regional de los países del sur global, para establecer mecanismos propios de gestión de sistemas algorítmicos, además de falta de participación en las discusiones internacionales, o del desarrollo de conversaciones internas sobre la necesidad de contextualizar estos sistemas con problemáticas y retos de la región.
+
     En conclusión, existe una clara dependencia tanto tecnológica como estructural para gobernar una tecnología que está transformando las dinámicas de la sociedad.
     `,
     checklist: [
-      "Puedo buscar, evaluar y gestionar información académica usando el método CRAAP",
-      "Domino la comunicación efectiva en entornos virtuales y colaboro productivamente en línea",
-      "Soy capaz de crear contenido digital accesible y de calidad académica",
-      "Aplico prácticas de seguridad digital y comprendo mis responsabilidades como ciudadano digital",
-      "Cuento con estrategias para diagnosticar y resolver problemas técnicos de manera autónoma",
-      "Tengo una mentalidad de aprendizaje continuo y sé cómo mantener actualizadas mis competencias",
-      "Reconozco la importancia de la ética digital y el respeto a la propiedad intelectual",
+      "Entiendo la evolución de los algoritmos hacia sistemas de IA y su impacto el entorno empresarial y social.",
+      "Reconozco los riesgos asociados al uso de sistemas algoritmicos, como sesgos y opacidad",
+      "Comprendo los marcos regulatorios y estándares internacionales que permiten implementar gobernanza algorítmica responsable.",
+      "Adapto estrategias de gobernanza algorítmica a contextos organizacionales específicos.",
     ],
-    nextSteps: "Te invitamos a poner en práctica estas competencias en tu próximo proyecto académico. Comienza por auditar tu huella digital actual, configura la autenticación de dos factores en tus cuentas principales, y explora al menos una plataforma de aprendizaje en línea para continuar tu desarrollo. Recuerda que el camino hacia la competencia digital es un viaje continuo, no un destino final.",
-    avatarTranscript: "¡Felicitaciones por completar este objeto digital de aprendizaje! Espero que las competencias exploradas te sean útiles en tu vida académica y profesional. Recuerda que lo más importante no es dominar todas las herramientas, sino mantener una actitud de curiosidad y apertura hacia el aprendizaje continuo. La tecnología seguirá evolucionando, pero con las bases que has construido aquí, estarás preparado para adaptarte y prosperar. ¡Mucho éxito en tu camino digital!",
+    nextSteps: `Los esfuerzos para **implementar con exito** una estrategia de gobernanza requiere de multiples frentes coordinados, tecnicos, estrategicos y funcionales. Lograrlo implica iniciar e iterar bajo las dinamicas de cada entorno para encontrar el equilibrio más apropiado a cada contexto.
+
+    Revisa los marcos regulatorios y estándares internacionales, como la Ley de IA de la Unión Europea, el marco NIST AI RMF 1.0 y las normas ISO relacionadas, para profundizar en los requisitos y recomendaciones para la gobernanza algorítmica.`,
+    avatarTranscript: "Hola, ¡Felicitaciones por completar este objeto digital de aprendizaje! Espero que las competencias exploradas te sean útiles en tu vida académica y profesional. Recuerda que lo más importante no es dominar todas las herramientas, sino mantener una actitud de curiosidad y apertura hacia el aprendizaje continuo. La tecnología seguirá evolucionando, pero con las bases que has construido aquí, estarás preparado para adaptarte y prosperar. ¡Mucho éxito en tu camino digital!",
   },
 
   references: [
@@ -752,15 +771,20 @@ Ahora continúa hacia la evaluación para poner a prueba los conceptos aprendido
 
   credits: {
     team: [
+      { role: "Area de conocimiento", name: "Inteligencia Artificial - Gobernanza Algorítmica" },
+      { role: "Nombre del Material", name: "Marcos de Gobernanza Algorítmica en Sistemas de Decisión Empresarial" },
       { role: "Autoría y desarrollo conceptual", name: "Jose Felipe Gasca Guerrero" },
       { role: "Diseño y desarrollo web", name: "Equipo Autor" },
-      { role: "Progama", name: "Especialización en Analitica y Ciencia de Datos"},
+      { role: "Sonidos y voces", name: "Videos de avatar generados por HeyGen, a partir de guión elaborado por el autor" },
+      { role: "Año elaboración", name: "2026" },
+      { role: "Nivel Educativo", name: "Alto Posgrado/Especialización" },
+      { role: "Programa", name: "Especialización en Analitica y Ciencia de Datos"},
       { role: "Institución", name: "Universidad de Cundinamarca"}
 
     ],
     license: "CC BY 4.0",
     licenseUrl: "https://creativecommons.org/licenses/by/4.0/deed.es",
-    licenseNote: "Este recurso educativo abierto puede ser reutilizado, adaptado y distribuido libremente, siempre que se otorgue el crédito apropiado a los autores originales. Se permite su uso con fines comerciales y no comerciales, incluyendo la creación de obras derivadas bajo los mismos términos.",
+    licenseNote: "Este recurso educativo abierto puede ser reutilizado, adaptado y distribuido libremente, siempre que se otorgue el crédito apropiado a los autores originales. Se permite su uso con fines comerciales y no comerciales, incluyendo la creación de obras derivadas bajo los mismos términos. Los RED producidos bajo la supervisión de la Oficina de Educación Virtual y a Distancia de la Universidad de Cundinamarca cuentan con licencia Creative Commons CC BY-NC-SA 4.0.",
   },
 };
 
